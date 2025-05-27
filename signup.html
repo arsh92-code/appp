@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="index1.css">
+</head>
+<body>
+    <div class="container">
+        <img src="./image/eventlogo2.png" alt="Company Logo" class="logo" height="200" width="500">
+
+        <h2>Step - 1</h2>
+
+        <!-- Registration Form -->
+        <form onsubmit="event.preventDefault(); validateAndRedirect();">
+            <input type="email" name="email" id="email" class="form-control" placeholder="Email" required>
+
+            <input type="password" name="pin" id="pin" class="form-control" placeholder="Create 4 digit pin" maxlength="4" required>
+
+            <input type="tel" name="mobile" id="mobile" class="form-control" placeholder="Add Mobile Number" pattern="[0-9]{10}" required>
+
+            <input type="text" name="fullName" id="fullName" class="form-control" placeholder="Enter your name" pattern="[A-Za-z ]{2,}" required>
+
+            <input type="text" name="location" id="location" class="form-control" placeholder="Enter Location" required>
+
+            <button type="submit" class="btn btn-outline">Register</button>
+        </form>
+
+        <p class="login-link">
+            <a href="index.html">Already have an account? Sign in Now!</a>
+        </p>
+    </div>
+
+    <script>
+        // JavaScript Validation Function
+        function validateAndRedirect() {
+            const email = document.getElementById('email').value.trim();
+            const pin = document.getElementById('pin').value.trim();
+            const mobile = document.getElementById('mobile').value.trim();
+            const fullName = document.getElementById('fullName').value.trim();
+            const location = document.getElementById('location').value.trim();
+
+            // Email Validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+
+            // PIN Validation (4 digits)
+            if (!/^\d{4}$/.test(pin)) {
+                alert('PIN must be exactly 4 digits.');
+                return;
+            }
+
+            // Mobile Number Validation (10 digits)
+            if (!/^\d{10}$/.test(mobile)) {
+                alert('Mobile number must be exactly 10 digits.');
+                return;
+            }
+
+            // Full Name Validation
+            const namePattern = /^[A-Za-z ]{2,}$/;
+            if (!namePattern.test(fullName)) {
+                alert('Please enter a valid name (letters and spaces only).');
+                return;
+            }
+
+            // Location Validation
+            if (location === '') {
+                alert('Please enter your location.');
+                return;
+            }
+
+            // All validations passed
+            window.location.href = "signup1.html";
+        }
+    </script>
+</body>
+</html>

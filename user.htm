@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search & Contact Information</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: left
+            ;
+            justify-content: center;
+            background-color: #f0f2f5;
+            padding: 20px;
+        }
+
+        .search-container {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .search-box {
+            padding: 12px 20px;
+            font-size: 16px;
+            border: 1px solid #ddd;
+            border-radius: 24px;
+            width: 900%;
+            max-width: 700px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .search-button {
+            padding: 12px 24px;
+            background-color: #1a73e8;
+            color: white;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-left: 10px;
+        }
+
+        .search-button:hover {
+            background-color: #1557b0;
+        }
+
+        /* User Contact Card */
+        .contact-card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .profile-pic {
+            width: 80px;
+            height: 80px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            margin: auto;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .name {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0 5px;
+            color: #222;
+        }
+
+        .address {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .call-button {
+            background: #25D366;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 24px;
+            font-size: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: auto;
+            width: 150px;
+            transition: background 0.3s;
+        }
+
+        .call-button:hover {
+            background: #1da851;
+        }
+
+        .call-button i {
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Search Section -->
+    <div class="search-container">
+        <input type="text" class="search-box" placeholder="Search here...">
+        <button class="search-button">Search</button>
+    </div>
+
+    <!-- Contact Card -->
+    <div class="contact-card">
+        <div class="profile-pic"></div>
+        <div class="name">MOHAMMAD ARSH</div>
+        <div class="address">Malad, Mumbai</div>
+        <button class="call-button">
+            <i class="fas fa-phone"></i> Call Now
+        </button>
+    </div>
+
+    <script>
+        // Search functionality
+        const searchBox = document.querySelector('.search-box');
+        const searchButton = document.querySelector('.search-button');
+
+        function performSearch() {
+            const query = searchBox.value.trim();
+            if (query) {
+                alert(`Searching for: ${query}`);
+                searchBox.value = ''; // Clear input
+            }
+        }
+
+        searchButton.addEventListener('click', performSearch);
+        searchBox.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') performSearch();
+        });
+    </script>
+</body>
+</html>

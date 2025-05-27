@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ODCEVENT - Register</title>
+   
+    
+</head>
+<body>
+    <div class="container">
+        <img src="./image/eventlogo2.png" alt="Company Logo" class="logo" height="200" breadth="50">
+        <h2>Step - 2</h2>
+
+        <div class="container">
+            <h2>Upload Profile Image</h2>
+        
+            <!-- Profile Image Preview -->
+            <div>
+                <img src="./image/icon profile.jpg" id="profileImage" class="profile-pic" alt="Profile Picture">
+            </div>
+            
+            <!-- Hidden File Input -->
+            <input type="file" id="fileUpload" accept="image/*" onchange="uploadSuccess()">
+        
+            <!-- Custom Upload Button -->
+            <button class="upload-btn" onclick="document.getElementById('fileUpload').click()">Upload Image</button>
+        
+            <!-- Success and Error Messages -->
+            <input type="text" id="location" class="form-control" placeholder="Enter WhatsApp Number" required>
+            <script>
+                // ✅ JavaScript Function to Convert and Validate WhatsApp Number
+                function convertToWhatsApp() {
+                    const locationInput = document.getElementById('location');
+                    const output = document.getElementById('output');
+                    let phoneNumber = locationInput.value.trim();
+            
+                    // Remove any non-digit characters
+                    phoneNumber = phoneNumber.replace(/\D/g, '');
+            
+                    // Validate and format the number
+                    if (/^\d{10}$/.test(phoneNumber)) {
+                        // Format as WhatsApp link
+                        const whatsappLink = `https://wa.me/91${phoneNumber}`;
+                        
+                        output.innerHTML = `
+                            ✅ <strong>WhatsApp Link:</strong> <a href="${whatsappLink}" target="_blank">${whatsappLink}</a>
+                        `;
+                        output.style.color = "green";
+                    } else {
+                        output.textContent = "❌ Invalid WhatsApp Number! Please enter a valid 10-digit number.";
+                        output.style.color = "red";
+                    }
+                }
+            </script>
+        </div>
+               
+    </form>
+
+        <script>
+            // ✅ JavaScript Function to Handle Upload
+            function uploadSuccess() {
+                const fileInput = document.getElementById('fileUpload');
+                const profileImage = document.getElementById('profileImage');
+                const successMessage = document.getElementById('successMessage');
+                const errorMessage = document.getElementById('errorMessage');
+        
+                const file = fileInput.files[0];
+        
+                if (file) {
+                    // Validate file type
+                    const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+                    if (!validTypes.includes(file.type)) {
+                        errorMessage.style.display = 'block';
+                        successMessage.style.display = 'none';
+                        return;
+                    }
+        
+                    // Display image preview
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        profileImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+        
+                    // Show success message
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                }
+            }
+        </script>
+        
+                
+           
+       
+
+    <button type="button" class="btn btn-outline" onclick="validateAndRedirect()">Next</button>
+    <script>
+        // ✅ Function 1: Handle Image Upload and Preview
+        function uploadSuccess() {
+            const fileInput = document.getElementById('fileUpload');
+            const profileImage = document.getElementById('profileImage');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+    
+            const file = fileInput.files[0];
+    
+            if (file) {
+                const validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif'];
+                
+                // Validate file type
+                if (!validTypes.includes(file.type)) {
+                    errorMessage.style.display = 'block';
+                    successMessage.style.display = 'none';
+                    alert('Invalid file type! Please upload an image.');
+                    return;
+                }
+    
+                // Display uploaded image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    profileImage.src = e.target.result;
+                    successMessage.style.display = 'block';
+                    errorMessage.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            } else {
+                successMessage.style.display = 'none';
+                errorMessage.style.display = 'block';
+            }
+        }
+    
+        // ✅ Function 2: Validate WhatsApp Number
+        function validateWhatsAppNumber() {
+            const whatsappInput = document.getElementById('location');
+            const whatsappNumber = whatsappInput.value.trim().replace(/\D/g, '');
+    
+            if (/^\d{10}$/.test(whatsappNumber)) {
+                return whatsappNumber;  // Valid number
+            } else {
+                alert('Please enter a valid 10-digit WhatsApp number.');
+                return null;
+            }
+        }
+    
+        // ✅ Function 3: Validate and Redirect
+        function validateAndRedirect() {
+            const fileInput = document.getElementById('fileUpload');
+    
+            // Check if an image is uploaded
+            if (!fileInput.files.length) {
+                alert('Please upload a profile image.');
+                return;
+            }
+    
+            // Validate WhatsApp Number
+            const whatsappNumber = validateWhatsAppNumber();
+            if (!whatsappNumber) {
+                return;  // Exit if invalid
+            }
+    
+            // If all validation passes
+          
+    
+            // Redirect to the next page (replace with your actual page)
+            window.location.href = "typeaccount.html";
+        }    </script>
+      
+</body>
+</html>
+
+<style>@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+    * {
+        box-sizing: border-box;
+        font-family: "Lexend", sans-serif;
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        background-color: #f8f9fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+        transition: background-color 0.3s, color 0.3s;
+        flex-direction: column;
+        padding: 20px;
+    }
+    
+    
+    .logo {
+        max-width: 150px;
+        height: auto;
+        margin-bottom: 15px;
+    }
+    
+    h2 {
+        margin-bottom: 15px;
+        color: #333;
+    }
+    
+    input {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: 0.3s;
+    }
+    
+    input:focus {
+        border-color: #1E90FF;
+        outline: none;
+    }
+    
+    button {
+        width: 100%;
+        padding: 12px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: 0.3s;
+    }
+    
+    .btn-outline {
+        background: rgb(255, 255, 255);
+        border: 1px solid black;
+        color: rgb(0, 0, 0);
+    }
+    
+    .btn-outline:hover {
+        background: black;
+        color: white;
+    }
+    
+    .login-link a {
+        color: black;
+        text-decoration: none;
+        font-size: 14px;
+    }
+    
+    .login-link a:hover {
+        text-decoration: underline;
+    }
+    
+    @media (max-width: 576px) {
+        .container {
+            max-width: 95%;
+            padding: 15px;
+        }
+        h2 {
+            font-size: 20px;
+        }
+        input {
+            font-size: 14px;
+        }
+        button {
+            font-size: 14px;
+        }
+    }
+    body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #ffffff;
+}
+
+.container {
+    text-align: center;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.logo span {
+    color: red;
+}
+
+.title {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.profile-pic-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-pic {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #000000;
+    padding: 10px;
+    background-color: white;
+}
+
+.upload-btn {
+    width: 90%;
+    background-color: #000000;
+    color: white;
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+
+
+    </style>
